@@ -124,7 +124,7 @@ public class WebFrame extends JFrame {
 
   private void ReadFile(String filename) {
     try {
-      BufferedReader buff = new BufferedReader(new FileReader("C:\\links.txt"));
+      BufferedReader buff = new BufferedReader(new FileReader("link.txt"));
       try {
         String line = buff.readLine();
         while(true){
@@ -153,7 +153,7 @@ public class WebFrame extends JFrame {
     } catch (UnsupportedLookAndFeelException e) {
       e.printStackTrace();
     }
-    WebFrame w = new WebFrame("links.txt");
+    WebFrame w = new WebFrame("linktxt");
   }
 
   private void statusReset(){
