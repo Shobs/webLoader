@@ -4,7 +4,6 @@ import java.io.*;
 import java.net.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
 import javax.swing.*;
 
 public class WebWorker extends Thread {
@@ -32,8 +31,6 @@ public class WebWorker extends Thread {
       URL url = new URL(urlString);
       URLConnection connection = url.openConnection();
 
-           // Set connect() to throw an IOException
-           // if connection does not succeed in this many msecs.
       connection.setConnectTimeout(5000);
 
       connection.connect();
@@ -46,9 +43,8 @@ public class WebWorker extends Thread {
       contents = new StringBuilder(1000);
       long start = System.currentTimeMillis();
       while ((len = reader.read(array, 0, array.length)) > 0) {
-        if(Thread.interrupted()){
+        if(Thread.interrupted())
           frame.updateTable(rowNum, INTERRUPTED);
-        }
         contents.append(array, 0, len);
         Thread.sleep(100);
       }
@@ -59,7 +55,7 @@ public class WebWorker extends Thread {
       String status = curTime + "   " + (end-start) + "ms   " + contents.length() + " bytes";
       frame.updateTable(rowNum, status);
     }
-       // Otherwise control jumps to a catch...
+  
     catch(MalformedURLException ignored) {
       frame.updateTable(rowNum, "err");
     }

@@ -58,7 +58,7 @@
 
   <target name="run" depends="compile"
     description="runs the program">
-    <java classname="${classname}" classpath="${build}" />
+    <java fork="true" classname="${classname}" classpath="${build}" />
   </target>
 
   <target name="clean"
