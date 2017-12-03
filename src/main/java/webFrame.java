@@ -153,7 +153,7 @@ public class WebFrame extends JFrame {
     } catch (UnsupportedLookAndFeelException e) {
       e.printStackTrace();
     }
-    WebFrame w = new WebFrame("linktxt");
+    WebFrame w = new WebFrame("link.txt");
   }
 
   private void statusReset(){
