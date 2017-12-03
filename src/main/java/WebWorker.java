@@ -2,8 +2,8 @@ package main.java;
 
 import java.io.*;
 import java.net.*;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.text.*;
+import java.util.*;
 import javax.swing.*;
 
 /**
@@ -11,7 +11,7 @@ import javax.swing.*;
  */
 public class WebWorker extends Thread {
   private WebFrame frame;
-  private String urlString;
+  private String website;
   private int rowNum;
   private final String INTERRUPTED = "Interrupted";
 
@@ -23,7 +23,7 @@ public class WebWorker extends Thread {
    * @return        [WebWorker object]
    */
   public WebWorker(String url,int rowNum, WebFrame frame) {
-    urlString = url;
+    website = url;
     this.frame = frame;
     this.rowNum = rowNum;
   }
@@ -34,11 +34,11 @@ public class WebWorker extends Thread {
   public void run(){
     frame.increaseThreads();
 
-    System.out.println("Fetching...." + urlString);
+    System.out.println("Fetching...." + website);
     InputStream input = null;
     StringBuilder contents = null;
     try {
-      URL url = new URL(urlString);
+      URL url = new URL(website);
       URLConnection connection = url.openConnection();
 
       connection.setConnectTimeout(5000);
@@ -53,7 +53,7 @@ public class WebWorker extends Thread {
       contents = new StringBuilder(1000);
       long start = System.currentTimeMillis();
       while ((len = reader.read(array, 0, array.length)) > 0) {
-        System.out.println("Fetching...." + urlString + len);
+        System.out.println("Fetching...." + website + len);
         if(Thread.interrupted())
           frame.updateTable(rowNum, INTERRUPTED);
         contents.append(array, 0, len);

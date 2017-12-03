@@ -70,22 +70,19 @@ public class WebFrame extends JFrame {
         elapsedLbl = new JLabel("Elapsed: 0");
         progressBar = new JProgressBar();
 
-
-        panel.add(Box.createRigidArea(new Dimension(0, 5)));
-        panel.add(singleBtn);
-        panel.add(Box.createRigidArea(new Dimension(0, 5)));
-        panel.add(concurrentBtn);
-        panel.add(Box.createRigidArea(new Dimension(0, 5)));
-        panel.add(textFld);
-        panel.add(Box.createRigidArea(new Dimension(0, 5)));
-        panel.add(runningLbl);
-        panel.add(Box.createRigidArea(new Dimension(0, 5)));
-        panel.add(completedLbl);
-        panel.add(Box.createRigidArea(new Dimension(0, 5)));
-        panel.add(elapsedLbl);
-        panel.add(Box.createRigidArea(new Dimension(0, 5)));
+        
         panel.add(progressBar);
-        panel.add(Box.createRigidArea(new Dimension(0, 5)));
+        panel.add(textFld); 
+        panel.add(singleBtn);
+        panel.add(concurrentBtn);
+        
+        panel.add(Box.createRigidArea(new Dimension(10, 10)));
+        panel.add(runningLbl);
+        panel.add(Box.createRigidArea(new Dimension(10, 10)));
+        panel.add(completedLbl);
+        panel.add(Box.createRigidArea(new Dimension(10, 10)));
+        panel.add(elapsedLbl);
+        panel.add(Box.createRigidArea(new Dimension(10, 10)));
         panel.add(stopBtn);
 
         this.add(panel);
