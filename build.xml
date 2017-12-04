@@ -1,4 +1,5 @@
 <project name="webLoader">
+  <property name="projectName" value="WebFrame" />
   <property name="classname" value="main.java.WebFrame"/>
   <property name="dist" value="dist"/>
   <property name="build" value="build"/>
@@ -53,7 +54,11 @@
     <mkdir dir="${dist}"/>
 
     <!-- Put everything in ${bin} into the MyProject-${DSTAMP}.jar file -->
-    <jar jarfile="${dist}/${classname}-${DSTAMP}.jar" basedir="${main.build}"/>
+    <jar jarfile="${dist}/${projectName}-${DSTAMP}.jar" basedir="${build}">
+      <manifest>
+        <attribute name="Main-Class" value="${classname}" />
+      </manifest>
+    </jar>
   </target>
 
   <target name="run" depends="compile"
